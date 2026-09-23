@@ -52,7 +52,7 @@ def crackSharedKey(keylength: int, cipherWords: List[str]):
         # brute force, we have keylength! possible keys gives every permutations
         for key in permutations(range(1, keylength + 1)):
             if decipherMessage(list(key), word) in DICTIONARY:
-                keyForWord.add(key)
+                keysForWord.add(key)
 
 
         if candidateKeys is None:

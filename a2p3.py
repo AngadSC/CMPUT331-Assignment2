@@ -52,7 +52,7 @@ def decipherMessage(key: List[int], message: str) -> str:
     for columnNumber in key:
         column = columnNumber - 1 
 
-        if column < numOfColumns:
+        if column < numOfFullColumns:
             columnLength = numOfRows
 
         else:

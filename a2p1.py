@@ -36,6 +36,8 @@ September 2026
 Author: Angad Chahil
 """
 
+import math
+
 def encipherMessage(key: int, message: str) -> str:
     # every string is a column on grid 
     ciphertext = [''] * key 
