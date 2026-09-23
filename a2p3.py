@@ -4,7 +4,7 @@
 #
 # CMPUT 331 Student Submission License
 # Version 1.0
-# Copyright 2026 <<Insert your name here>>
+# Copyright 2026 Angad Chahil
 #
 # Redistribution is forbidden in all circumstances. Use of this software
 # without explicit authorization from the author is prohibited.
@@ -33,13 +33,42 @@
 """
 CMPUT 331 Assignment 2 Student Solution
 September 2026
-Author: <Your name here>
+Author: Angad Chahil
 """
-
+import math
 from typing import List
 
 def decipherMessage(key: List[int], message: str) -> str:
-    raise NotImplementedError()
+    numOfColumns = len(key)
+    numOfRows = math.ceil(len(message) / numOfColumns)
+
+    numOfShadedBoxes = numOfColumns * numOfRows - len(message)
+    # shaded boxes go in to the botom right and towards the left from there
+    numOfFullColumns = numOfColumns - numOfShadedBoxes
+
+    columns = [''] * numOfColumns
+    currentIndex = 0
+
+    for columnNumber in key:
+        column = columnNumber - 1 
+
+        if column < numOfColumns:
+            columnLength = numOfRows
+
+        else:
+            columnLength = numOfRows - 1 
+
+        columns[column] = message[currentIndex:currentIndex + columnLength]
+        currentIndex += columnLength
+
+    plaintext = ''
+    for row in range(numOfRows):
+        for column in range(numOfColumns):
+            if row < len(columns[column]):
+                plaintext += columns[column][row]
+
+    return plaintext
+
 
 def test():
     assert decipherMessage([2, 4, 1, 5, 3], "IS HAUCREERNP F") == "CIPHERS ARE FUN"

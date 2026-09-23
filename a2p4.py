@@ -4,7 +4,7 @@
 #
 # CMPUT 331 Student Submission License
 # Version 1.0
-# Copyright 2026 <<Insert your name here>>
+# Copyright 2026 Angad Chahil
 #
 # Redistribution is forbidden in all circumstances. Use of this software
 # without explicit authorization from the author is prohibited.
@@ -33,15 +33,41 @@
 """
 CMPUT 331 Assignment 2 Student Solution
 September 2026
-Author: <Your name here>
+Author: Angad Chahil
 """
 
 from typing import List
 from itertools import permutations
 from a2p3 import decipherMessage
 
+with open("dictionary.txt") as dictionaryFile:
+    DICTIONARY = set(dictionaryFile.read().split())
+
+# loads te dict at once 
 def crackSharedKey(keylength: int, cipherWords: List[str]): 
-    raise NotImplementedError()
+    candidateKeys = None 
+# gets the keys that work for curent wsord 
+    for word in cipherWords:
+        keysForWord = set() 
+        # brute force, we have keylength! possible keys gives every permutations
+        for key in permutations(range(1, keylength + 1)):
+            if decipherMessage(list(key), word) in DICTIONARY:
+                keyForWord.add(key)
+
+
+        if candidateKeys is None:
+            candidateKeys = keysForWord
+        else:
+            candidateKeys &= keysForWord
+# if empty then we have no more possiblites 
+        if not candidateKeys:
+            break
+
+    if candidateKeys is None:
+        return []
+
+    return [list(key) for key in candidateKeys]
+
 
 def test():
     assert len(crackSharedKey(3, ["AET"])) == 3 # [[1, 3, 2], [2, 1, 3], [3, 2, 1]]

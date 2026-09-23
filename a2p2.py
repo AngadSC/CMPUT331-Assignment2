@@ -4,7 +4,7 @@
 #
 # CMPUT 331 Student Submission License
 # Version 1.0
-# Copyright 2026 <<Insert your name here>>
+# Copyright 2026 <<Angad Chahil>>
 #
 # Redistribution is forbidden in all circumstances. Use of this software
 # without explicit authorization from the author is prohibited.
@@ -33,13 +33,30 @@
 """
 CMPUT 331 Assignment 2 Student Solution
 September 2026
-Author: <Your name here>
+Author: Angad Chahil
 """
 
 from typing import List
 
 def encipherMessage(key: List[int], message: str) -> str:
-    raise NotImplementedError()
+    numOfColumns = len(key)
+#build columnbs same as beore, but num is defined by key
+
+    columns = [''] * numOfColumns
+
+    for column in range(numOfColumns):
+        currentIndex = column
+# stops when we hit a shaded box 
+        while currentIndex < len(message):
+            columns[column] += message[currentIndex]
+            currentIndex += numOfColumns
+
+# reorder the columns based on the keys ordering 
+    ciphertext = ''
+    for columnNumber in key:
+        ciphertext += columns[columnNumber - 1]
+
+    return ciphertext
 
 def test():
     assert encipherMessage([2, 4, 1, 5, 3], "CIPHERS ARE FUN") == "IS HAUCREERNP F"

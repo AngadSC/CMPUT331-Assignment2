@@ -37,10 +37,38 @@ Author: Angad Chahil
 """
 
 def encipherMessage(key: int, message: str) -> str:
-    raise NotImplementedError()
+    # every string is a column on grid 
+    ciphertext = [''] * key 
+
+    for column in range(key):
+        currentIndex = column 
+        while currentIndex < len(message):
+            ciphertext[column] += message[currentIndex]
+            currentIndex +=key
+
+    return ''.join(ciphertext)
+
 
 def decipherMessage(key: int, message: str) -> str:
-    raise NotImplementedError()
+    numOfColumns = math.ceil(len(message) / key)
+    numOfRows = key
+    numOfShadedBoxes = (numOfColumns * numOfRows) - len(message)
+
+    plaintext = [''] * numOfColumns
+
+    column = 0
+    row = 0
+
+    for symbol in message:
+        plaintext[column] += symbol
+        column += 1
+# if we hit the end of the row or a shaded box 
+        if (column == numOfColumns) or (column == numOfColumns - 1 and
+            row >= numOfRows - numOfShadedBoxes):
+            column = 0
+            row += 1
+
+    return ''.join(plaintext)
 
 def test():
     assert encipherMessage(5, "CIPHERS ARE FUN") == "CREIS P FHAUERN"
