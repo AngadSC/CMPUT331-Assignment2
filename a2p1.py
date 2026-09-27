@@ -38,6 +38,9 @@ Author: Angad Chahil
 
 import math
 
+# grid code and the shaded box technique adapted from transpositionEncrypt.py
+# and transpositionDecrypt.py, Al Sweigart, "Cracking Codes with Python"
+# (No Starch Press, BSD licensed) https://www.nostarch.com/crackingcodes/
 def encipherMessage(key: int, message: str) -> str:
     # every string is a column on grid 
     ciphertext = [''] * key 

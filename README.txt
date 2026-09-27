@@ -24,4 +24,10 @@ pass. To call the functions directly, load a script interactively instead:
 python3 -i a2p2.py
 >>> encipherMessage([2, 4, 1, 5, 3], "CIPHERS ARE FUN")
 
-
+REFERENCES
+----------
+The grid construction in a2p1.py, a2p2.py and a2p3.py, and the shaded box
+technique used to handle messages that do not fill the grid, are adapted from
+the transpositionEncrypt.py and transpositionDecrypt.py programs in Al
+Sweigart, "Cracking Codes with Python" (No Starch Press, BSD licensed),
+https://www.nostarch.com/crackingcodes/

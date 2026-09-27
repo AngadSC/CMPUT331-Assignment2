@@ -38,6 +38,9 @@ Author: Angad Chahil
 import math
 from typing import List
 
+# grid code and the shaded box technique adapted from transpositionEncrypt.py
+# and transpositionDecrypt.py, Al Sweigart, "Cracking Codes with Python"
+# (No Starch Press, BSD licensed) https://www.nostarch.com/crackingcodes/
 def decipherMessage(key: List[int], message: str) -> str:
     numOfColumns = len(key)
     numOfRows = math.ceil(len(message) / numOfColumns)
