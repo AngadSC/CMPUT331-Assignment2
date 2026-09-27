@@ -46,13 +46,13 @@ def encipherMessage(key: int, message: str) -> str:
         currentIndex = column 
         while currentIndex < len(message):
             ciphertext[column] += message[currentIndex]
-            currentIndex +=key
+            currentIndex +=key   # moves down one row 
 
-    return ''.join(ciphertext)
+    return ''.join(ciphertext)      # joins from left to right 
 
 
 def decipherMessage(key: int, message: str) -> str:
-    numOfColumns = math.ceil(len(message) / key)
+    numOfColumns = math.ceil(len(message) / key)    # grid trasnpose 
     numOfRows = key
     numOfShadedBoxes = (numOfColumns * numOfRows) - len(message)
 

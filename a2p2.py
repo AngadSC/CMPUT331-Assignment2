@@ -54,7 +54,7 @@ def encipherMessage(key: List[int], message: str) -> str:
 # reorder the columns based on the keys ordering 
     ciphertext = ''
     for columnNumber in key:
-        ciphertext += columns[columnNumber - 1]
+        ciphertext += columns[columnNumber - 1]     # key indexed from 1 
 
     return ciphertext
 

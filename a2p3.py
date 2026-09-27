@@ -60,7 +60,7 @@ def decipherMessage(key: List[int], message: str) -> str:
 
         columns[column] = message[currentIndex:currentIndex + columnLength]
         currentIndex += columnLength
-
+# reads grid backwards row by row 
     plaintext = ''
     for row in range(numOfRows):
         for column in range(numOfColumns):

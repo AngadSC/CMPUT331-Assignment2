@@ -52,13 +52,13 @@ def crackSharedKey(keylength: int, cipherWords: List[str]):
         # brute force, we have keylength! possible keys gives every permutations
         for key in permutations(range(1, keylength + 1)):
             if decipherMessage(list(key), word) in DICTIONARY:
-                keysForWord.add(key)
+                keysForWord.add(key) # typles so  i can us e aset 
 
 
         if candidateKeys is None:
             candidateKeys = keysForWord
         else:
-            candidateKeys &= keysForWord
+            candidateKeys &= keysForWord        # same key for all words 
 # if empty then we have no more possiblites 
         if not candidateKeys:
             break
